@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mekanisme Seleksi Akses Data & Sampel BGSI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #2a5298;
+        }
+        
+        h1 {
+            color: #1e3c72;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .speaker-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            background: #2a5298;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .framework-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #2a5298;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .framework-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .framework-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .framework-card ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .framework-card li {
+            padding: 8px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .framework-card li:before {
+            content: "✓ ";
+            color: #2a5298;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .process-flow {
+            background: #ecf0f1;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        
+        .flow-step {
+            display: flex;
+            gap: 20px;
+            margin: 25px 0;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: #2a5298;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex-grow: 1;
+        }
+        
+        .step-title {
+            color: #1e3c72;
+            font-weight: 600;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .step-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .criteria-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .criteria-table th {
+            background: #2a5298;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .criteria-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .criteria-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .priority-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .high-priority {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .medium-priority {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .alert-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .alert-title {
+            color: #856404;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .alert-content {
+            color: #856404;
+            line-height: 1.6;
+        }
+        
+        .governance-structure {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .governance-box {
+            background: white;
+            border: 2px solid #2a5298;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .governance-box h4 {
+            color: #2a5298;
+            margin-bottom: 15px;
+        }
+        
+        .governance-box p {
+            color: #666;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .risk-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .risk-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .risk-title {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .mitigation {
+            color: #27ae60;
+            font-size: 0.9em;
+            margin-top: 10px;
+            padding-left: 15px;
+            border-left: 3px solid #27ae60;
+        }
+        
+        .key-points {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .key-points h3 {
+            color: #155724;
+            margin-bottom: 15px;
+        }
+        
+        .key-points ul {
+            list-style: none;
+        }
+        
+        .key-points li {
+            color: #155724;
+            padding: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .key-points li:before {
+            content: "→ ";
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .governance-structure {
+                grid-template-columns: 1fr;
+            }
+            
+            .risk-matrix {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Membangun Mekanisme Seleksi Akses Data & Sampel</h1>
+            <p class="subtitle">Yang Transparan & Akuntabel</p>
+        </div>
+        
+        <div class="speaker-info">
+            <h3>📢 dr. Ahmad Hidayat, MSc, MBA</h3>
+            <p>Konsultan INA-CRC | FGD Sesi 4: Mekanisme Seleksi Akses</p>
+        </div>
+
+        <!-- BAGIAN 1: BEST PRACTICES INTERNASIONAL -->
+        <div class="section">
+            <div class="section-title">
+                <span>🌍</span>
+                <span>Lessons Learned dari Best Practices Global</span>
+            </div>
+            
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <h3>🇬🇧 UK Biobank Model</h3>
+                    <ul>
+                        <li>2-tier access: Open (agregat) vs Controlled (individual-level)</li>
+                        <li>Biaya akses tiering: £60k-£180k untuk 3 tahun</li>
+                        <li>Independent Access Review Committee</li>
+                        <li>Publikasi wajib dalam 2 tahun</li>
+                        <li>Return of aggregate results ke partisipan</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card">
+                    <h3>🇺🇸 All of Us (NIH) Model</h3>
+                    <ul>
+                        <li>Researcher Workbench untuk akses terkontrol</li>
+                        <li>Public Data Tier tanpa approval</li>
+                        <li>Cloud credit model (seperti AWS)</li>
+                        <li>Mandatory data security training</li>
+                        <li>Community engagement & participant return</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card">
+                    <h3>🇸🇬 SG10K & TRUST Platform</h3>
+                    <ul>
+                        <li>Data Access Committee multidisiplin</li>
+                        <li>Main PI harus dari Singapura (sovereignty)</li>
+                        <li>Kolaborator internasional melalui PI lokal</li>
+                        <li>Benefit sharing mandatory</li>
+                        <li>Annual report publikasi & impact</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="alert-box" style="background: #d1ecf1; border-left-color: #0c5460;">
+                <div class="alert-title" style="color: #0c5460;">💡 Adaptasi untuk Konteks Indonesia</div>
+                <div class="alert-content" style="color: #0c5460;">
+                    <strong>Yang dapat diadopsi:</strong> Tiered access, cloud credit model, independent committee, mandatory training<br>
+                    <strong>Yang perlu modifikasi:</strong> Biaya akses (lebih rendah untuk emerging researchers), kepemimpinan PI lokal (fleksibel untuk kolaborasi), timeline review (lebih cepat untuk responsif)<br>
+                    <strong>Yang unik Indonesia:</strong> Peran Hub hospitals dalam approval sampel, integrasi dengan SATUSEHAT, compliance UU PDP 27/2022
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 2: FRAMEWORK EVALUASI -->
+        <div class="section">
+            <div class="section-title">
+                <span>📋</span>
+                <span>Framework Evaluasi Komprehensif</span>
+            </div>
+            
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <h3>1. Evaluasi Pemohon (Who)</h3>
+                    <ul>
+                        <li>Kredibilitas institusi & track record</li>
+                        <li>Kualifikasi peneliti utama & tim</li>
+                        <li>Publikasi & kontribusi ilmiah sebelumnya</li>
+                        <li>Kepatuhan terhadap etik penelitian</li>
+                        <li>Kapasitas infrastruktur & keamanan data</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card">
+                    <h3>2. Evaluasi Tujuan (Why)</h3>
+                    <ul>
+                        <li>Kejelasan objektif penelitian</li>
+                        <li>Relevansi dengan prioritas kesehatan nasional</li>
+                        <li>Potensi dampak klinis & sosial</li>
+                        <li>Alignment dengan tujuan BGSI</li>
+                        <li>Benefit sharing plan yang jelas</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card">
+                    <h3>3. Evaluasi Metodologi (How)</h3>
+                    <ul>
+                        <li>Kesesuaian desain studi dengan pertanyaan riset</li>
+                        <li>Justifikasi kebutuhan data/sampel spesifik</li>
+                        <li>Rencana analisis yang robust</li>
+                        <li>Protokol keamanan data yang memadai</li>
+                        <li>Rencana publikasi & diseminasi hasil</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 3: ALUR SELEKSI BERTINGKAT -->
+        <div class="section">
+            <div class="section-title">
+                <span>🔄</span>
+                <span>Alur Seleksi Akses Bertingkat (Tiered Review)</span>
+            </div>
+            
+            <div class="process-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Screening Administratif (3-5 hari kerja)</div>
+                        <div class="step-desc">
+                            <strong>Dilakukan oleh:</strong> Tim Sekretariat BGSI<br>
+                            <strong>Kriteria:</strong> Kelengkapan dokumen (EOI, proposal, ethical clearance, MTA), kesesuaian format, validitas institusi<br>
+                            <strong>Output:</strong> LULUS → Lanjut tahap 2 | TIDAK LULUS → Revisi/Penolakan
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Review Teknis & Etik (2-3 minggu)</div>
+                        <div class="step-desc">
+                            <strong>Dilakukan oleh:</strong> Sub-komite Teknis (ahli genomik, biostatistik, biobank)<br>
+                            <strong>Kriteria:</strong> Kelayakan ilmiah, kesesuaian metodologi, justifikasi sampel size, protokol keamanan data<br>
+                            <strong>Scoring:</strong> Skor minimal 70/100 untuk lanjut
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Review Komite Akses (1-2 minggu)</div>
+                        <div class="step-desc">
+                            <strong>Dilakukan oleh:</strong> Data & Sample Access Committee (DAC/SAC)<br>
+                            <strong>Anggota:</strong> Pakar hukum, bioetika, perwakilan Hub, Kemenkes, independen expert<br>
+                            <strong>Fokus:</strong> Aspek ELSI (Ethical, Legal, Social Implications), benefit sharing, kedaulatan data
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Konfirmasi Hub Kontributor (khusus sampel)</div>
+                        <div class="step-desc">
+                            <strong>Hanya untuk akses spesimen:</strong> Notifikasi & persetujuan RS Hub yang menyumbang sampel<br>
+                            <strong>SLA:</strong> 5 hari kerja untuk respons<br>
+                            <strong>Prinsip:</strong> Hub memiliki hak veto untuk sampel yang mereka kontribusikan
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">Penandatanganan Agreement & Akses</div>
+                        <div class="step-desc">
+                            <strong>Dokumen:</strong> Data/Material Transfer Agreement (DTA/MTA), Collaborative Research Agreement (jika applicable)<br>
+                            <strong>Akses:</strong> Melalui TRE (data) atau pengiriman sampel dengan rantai dingin (spesimen)<br>
+                            <strong>Monitoring:</strong> Quarterly progress report
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 4: KRITERIA PENILAIAN -->
+        <div class="section">
+            <div class="section-title">
+                <span>📊</span>
+                <span>Kriteria Penilaian & Bobot Scoring</span>
+            </div>
+            
+            <table class="criteria-table">
+                <thead>
+                    <tr>
+                        <th>Kriteria</th>
+                        <th>Bobot</th>
+                        <th>Indikator Kunci</th>
+                        <th>Prioritas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Kelayakan Ilmiah</strong></td>
+                        <td>30%</td>
+                        <td>Novelty, metodologi, feasibility, publikasi potensial</td>
+                        <td><span class="priority-badge high-priority">Tinggi</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dampak Kesehatan</strong></td>
+                        <td>25%</td>
+                        <td>Relevansi dengan beban penyakit nasional, potensi translasi klinis</td>
+                        <td><span class="priority-badge high-priority">Tinggi</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kepatuhan Etik & Hukum</strong></td>
+                        <td>20%</td>
+                        <td>Ethical clearance, informed consent, compliance UU PDP</td>
+                        <td><span class="priority-badge high-priority">Tinggi</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kapasitas Pemohon</strong></td>
+                        <td>15%</td>
+                        <td>Track record, infrastruktur, keamanan data, publikasi</td>
+                        <td><span class="priority-badge medium-priority">Sedang</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Benefit Sharing Plan</strong></td>
+                        <td>10%</td>
+                        <td>Kejelasan rencana, keadilan distribusi manfaat, keberlanjutan</td>
+                        <td><span class="priority-badge medium-priority">Sedang</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- BAGIAN 5: STRUKTUR GOVERNANCE -->
+        <div class="section">
+            <div class="section-title">
+                <span>🏛️</span>
+                <span>Struktur Tata Kelola Komite Akses</span>
+            </div>
+            
+            <div class="governance-structure">
+                <div class="governance-box">
+                    <h4>🔵 Steering Committee</h4>
+                    <p>Kepala BB Binomika, Perwakilan Kemenkes, Perwakilan Hub</p>
+                    <p><strong>Peran:</strong> Kebijakan strategis & eskalasi</p>
+                </div>
+                
+                <div class="governance-box">
+                    <h4>🟢 Data & Sample Access Committee (DAC/SAC)</h4>
+                    <p>5-7 anggota: Ahli hukum, bioetika, genomik, perwakilan publik, independen expert</p>
+                    <p><strong>Peran:</strong> Keputusan final akses</p>
+                </div>
+                
+                <div class="governance-box">
+                    <h4>🟡 Technical Review Panel</h4>
+                    <p>Ahli spesifik sesuai topik penelitian (genomik, biostatistik, klinis)</p>
+                    <p><strong>Peran:</strong> Evaluasi teknis & rekomendasi</p>
+                </div>
+            </div>
+            
+            <div class="alert-box">
+                <div class="alert-title">⚠️ Prinsip Transparansi & Akuntabilitas</div>
+                <div class="alert-content">
+                    <strong>Conflict of Interest:</strong> Semua anggota komite wajib mendeklarasikan COI sebelum review<br>
+                    <strong>Dokumentasi:</strong> Semua keputusan didokumentasikan dengan alasan tertulis<br>
+                    <strong>Banding:</strong> Pemohon dapat mengajukan banding dengan evidence baru dalam 14 hari<br>
+                    <strong>Audit Trail:</strong> Sistem digital mencatat seluruh proses review untuk akuntabilitas
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 6: MANAJEMEN RISIKO -->
+        <div class="section">
+            <div class="section-title">
+                <span>⚠️</span>
+                <span>Manajemen Risiko & Mitigasi</span>
+            </div>
+            
+            <div class="risk-matrix">
+                <div class="risk-card">
+                    <div class="risk-title">RISIKO: Kebocoran Data Genomik</div>
+                    <p>Data genomik bersifat identifiable & permanen. Kebocoran dapat mengidentifikasi individu & keluarga</p>
+                    <div class="mitigation">
+                        <strong>Mitigasi:</strong> TRE dengan akses terbatas, enkripsi end-to-end, audit log, sanksi hukum dalam agreement
+                    </div>
+                </div>
+                
+                <div class="risk-card">
+                    <div class="risk-title">RISIKO: Conflict of Interest Komite</div>
+                    <p>Anggota komite memiliki kepentingan finansial/riset dengan pemohon</p>
+                    <div class="mitigation">
+                        <strong>Mitigasi:</strong> Deklarasi COI wajib, recusal dari review jika konflik, rotasi anggota berkala
+                    </div>
+                </div>
+                
+                <div class="risk-card">
+                    <div class="risk-title">RISIKO: Ketidakadilan Akses</div>
+                    <p>Institusi besar lebih mudah akses dibanding institusi kecil/daerah</p>
+                    <div class="mitigation">
+                        <strong>Mitigasi:</strong> Kuota untuk institusi emerging, mentoring program, biaya akses subsidized untuk akademik
+                    </div>
+                </div>
+                
+                <div class="risk-card">
+                    <div class="risk-title">RISIKO: Penyalahgunaan Sampel</div>
+                    <p>Penggunaan di luar consent partisipan atau tujuan awal penelitian</p>
+                    <div class="mitigation">
+                        <strong>Mitigasi:</strong> MTA ketat, monitoring penggunaan, sanksi blacklist untuk pelanggaran, requirement publikasi hasil
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 7: MONITORING & EVALUASI -->
+        <div class="section">
+            <div class="section-title">
+                <span>📈</span>
+                <span>Framework Monitoring & Evaluasi Berkelanjutan</span>
+            </div>
+            
+            <table class="criteria-table">
+                <thead>
+                    <tr>
+                        <th>KPI</th>
+                        <th>Target 2026</th>
+                        <th>Metode Pengukuran</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Waktu Review</strong></td>
+                        <td>≤ 6 minggu dari submission hingga keputusan</td>
+                        <td>Digital tracking system dengan timestamp otomatis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Approval Rate</strong></td>
+                        <td>40-60% (balance antara selektif & accessible)</td>
+                        <td>Quarterly report jumlah approved vs rejected</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diversitas Pemohon</strong></td>
+                        <td>≥30% dari institusi non-Jakarta/emerging</td>
+                        <td>Analisis geografis & kategori institusi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compliance Rate</strong></td>
+                        <td>100% kepatuhan terhadap MTA/DTA</td>
+                        <td>Audit berkala & monitoring penggunaan</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Publikasi Output</strong></td>
+                        <td>≥50% menghasilkan publikasi dalam 2 tahun</td>
+                        <td>Tracking publikasi & citation impact</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Benefit Realization</strong></td>
+                        <td>100% proyek memiliki benefit sharing plan</td>
+                        <td>Dokumentasi benefit sharing implementation</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- BAGIAN 8: MEKANISME BANDING -->
+        <div class="section">
+            <div class="section-title">
+                <span>⚖️</span>
+                <span>Mekanisme Banding & Penyelesaian Sengketa</span>
+            </div>
+            
+            <div class="process-flow">
+                <div class="flow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">Notifikasi Keputusan Tertulis</div>
+                        <div class="step-desc">
+                            Semua penolakan harus disertai alasan tertulis yang spesifik & konstruktif. Pemohon diberikan feedback untuk perbaikan proposal.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">Hak Banding (14 hari kerja)</div>
+                        <div class="step-desc">
+                            Pemohon dapat mengajukan banding dengan evidence tambahan, klarifikasi, atau revisi proposal. Banding hanya untuk keputusan penolakan, bukan untuk mempercepat proses.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">Review Banding oleh Panel Independen</div>
+                        <div class="step-desc">
+                            Panel berbeda dari reviewer awal (untuk independensi). Keputusan panel banding bersifat final. Timeline: 3 minggu.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">Eskalasi ke Steering Committee (kasus khusus)</div>
+                        <div class="step-desc">
+                            Hanya untuk kasus dengan implikasi kebijakan atau precedent setting. Steering Committee memberikan keputusan dengan mempertimbangkan kepentingan strategis BGSI.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RANGKUMAN ARSITEKTUR SISTEM -->
+        <div class="section">
+            <div class="section-title">
+                <span>🏗️</span>
+                <span>Arsitektur Sistem Akses Data & Sampel BGSI - High Level Overview</span>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin: 20px 0;">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h3 style="color: #1e3c72; margin-bottom: 10px;">Ekosistem Akses BGSI: End-to-End Architecture</h3>
+                    <p style="color: #666;">Dari Submission hingga Monitoring & Accountability</p>
+                </div>
+                
+                <!-- Layer 1: Input -->
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #3498db;">
+                    <h4 style="color: #3498db; margin-bottom: 15px;">📥 Layer 1: Application & Submission</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Portal Submission Online</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">EOI → Proposal → Ethical Clearance → MTA (jika perlu)</p>
+                        </div>
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Benchmarking Global</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">UK Biobank, All of Us, SG10K - Best practices adapted</p>
+                        </div>
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Applicant Types</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">Hub, Akademik, Industri, Internasional (via PI lokal)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #3498db; font-size: 2em; margin: 10px 0;">↓</div>
+
+                <!-- Layer 2: Review Process -->
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #27ae60;">
+                    <h4 style="color: #27ae60; margin-bottom: 15px;">🔍 Layer 2: Multi-Tier Review Process (5 Stages)</h4>
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                        <div style="background: #d5f4e6; padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="background: #27ae60; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-weight: bold;">1</div>
+                            <strong style="color: #2c3e50; font-size: 0.9em;">Admin Screening</strong>
+                            <p style="color: #666; font-size: 0.8em; margin-top: 5px;">3-5 hari</p>
+                        </div>
+                        <div style="background: #d5f4e6; padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="background: #27ae60; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-weight: bold;">2</div>
+                            <strong style="color: #2c3e50; font-size: 0.9em;">Technical Review</strong>
+                            <p style="color: #666; font-size: 0.8em; margin-top: 5px;">2-3 minggu</p>
+                        </div>
+                        <div style="background: #d5f4e6; padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="background: #27ae60; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-weight: bold;">3</div>
+                            <strong style="color: #2c3e50; font-size: 0.9em;">DAC/SAC Review</strong>
+                            <p style="color: #666; font-size: 0.8em; margin-top: 5px;">1-2 minggu</p>
+                        </div>
+                        <div style="background: #d5f4e6; padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="background: #27ae60; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-weight: bold;">4</div>
+                            <strong style="color: #2c3e50; font-size: 0.9em;">Hub Confirmation</strong>
+                            <p style="color: #666; font-size: 0.8em; margin-top: 5px;">5 hari</p>
+                        </div>
+                        <div style="background: #d5f4e6; padding: 12px; border-radius: 8px; text-align: center;">
+                            <div style="background: #27ae60; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; font-weight: bold;">5</div>
+                            <strong style="color: #2c3e50; font-size: 0.9em;">Agreement & Access</strong>
+                            <p style="color: #666; font-size: 0.8em; margin-top: 5px;">DTA/MTA</p>
+                        </div>
+                    </div>
+                    <div style="background: #e8f8f5; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <strong style="color: #27ae60;">⏱️ Total SLA: ≤ 6 minggu</strong> | 
+                        <strong style="color: #27ae60;">📊 Scoring: 5 Kriteria dengan Bobot</strong> (Ilmiah 30%, Dampak 25%, Etik 20%, Kapasitas 15%, Benefit Sharing 10%)
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #27ae60; font-size: 2em; margin: 10px 0;">↓</div>
+
+                <!-- Layer 3: Governance -->
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #e67e22;">
+                    <h4 style="color: #e67e22; margin-bottom: 15px;">🏛️ Layer 3: Governance Structure</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <div style="background: #fdebd0; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong style="color: #2c3e50;">Steering Committee</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">Kebijakan strategis & eskalasi</p>
+                        </div>
+                        <div style="background: #fdebd0; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong style="color: #2c3e50;">DAC/SAC (5-7 anggota)</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">Keputusan final akses + ELSI review</p>
+                        </div>
+                        <div style="background: #fdebd0; padding: 15px; border-radius: 8px; text-align: center;">
+                            <strong style="color: #2c3e50;">Technical Panel</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">Evaluasi teknis spesifik topik</p>
+                        </div>
+                    </div>
+                    <div style="background: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                        <strong style="color: #e67e22;">🔒 Transparansi:</strong> COI declaration, dokumentasi keputusan, mekanisme banding, audit trail digital
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #e67e22; font-size: 2em; margin: 10px 0;">↓</div>
+
+                <!-- Layer 4: Risk Management -->
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #e74c3c;">
+                    <h4 style="color: #e74c3c; margin-bottom: 15px;">⚠️ Layer 4: Risk Management & Mitigation</h4>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                        <div style="background: #fadbd8; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Kebocoran Data</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">→ TRE, enkripsi, audit log, sanksi hukum</p>
+                        </div>
+                        <div style="background: #fadbd8; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Conflict of Interest</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">→ Deklarasi COI, recusal, rotasi anggota</p>
+                        </div>
+                        <div style="background: #fadbd8; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Ketidakadilan Akses</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">→ Kuota emerging, subsidi, mentoring</p>
+                        </div>
+                        <div style="background: #fadbd8; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Penyalahgunaan Sampel</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">→ MTA ketat, monitoring, blacklist</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #e74c3c; font-size: 2em; margin: 10px 0;">↓</div>
+
+                <!-- Layer 5: Monitoring -->
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 5px solid #9b59b6;">
+                    <h4 style="color: #9b59b6; margin-bottom: 15px;">📈 Layer 5: Monitoring & Continuous Improvement</h4>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                        <div style="background: #ebdcf4; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">KPI Performance</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">Waktu review ≤6 minggu, Approval rate 40-60%, Diversitas ≥30%</p>
+                        </div>
+                        <div style="background: #ebdcf4; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Compliance Tracking</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">100% kepatuhan MTA/DTA, quarterly audit</p>
+                        </div>
+                        <div style="background: #ebdcf4; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #2c3e50;">Output Evaluation</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 8px;">≥50% publikasi dalam 2 tahun, benefit realization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; color: #9b59b6; font-size: 2em; margin: 10px 0;">↓</div>
+
+                <!-- Layer 6: Appeal & Dispute -->
+                <div style="background: white; padding: 20px; border-radius: 10px; border-left: 5px solid #34495e;">
+                    <h4 style="color: #34495e; margin-bottom: 15px;">⚖️ Layer 6: Appeal & Dispute Resolution</h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 15px;">
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px; flex: 1; text-align: center;">
+                            <strong style="color: #2c3e50;">Notifikasi Tertulis</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">Alasan spesifik & feedback konstruktif</p>
+                        </div>
+                        <span style="color: #34495e; font-size: 1.5em;">→</span>
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px; flex: 1; text-align: center;">
+                            <strong style="color: #2c3e50;">Banding (14 hari)</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">Evidence baru + klarifikasi</p>
+                        </div>
+                        <span style="color: #34495e; font-size: 1.5em;">→</span>
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px; flex: 1; text-align: center;">
+                            <strong style="color: #2c3e50;">Panel Independen</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">Keputusan final (3 minggu)</p>
+                        </div>
+                        <span style="color: #34495e; font-size: 1.5em;">→</span>
+                        <div style="background: #ecf0f1; padding: 15px; border-radius: 8px; flex: 1; text-align: center;">
+                            <strong style="color: #2c3e50;">Eskalasi (opsional)</strong>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 5px;">Steering Committee</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline & Roadmap -->
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin-top: 20px; color: white;">
+                    <h4 style="margin-bottom: 15px;">🚀 Implementation Roadmap 2025-2026</h4>
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                        <div style="text-align: center;">
+                            <strong>Q4 2025</strong>
+                            <p style="font-size: 0.9em; margin-top: 5px;">SOP + DAC/SAC + Portal</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>Q1 2026</strong>
+                            <p style="font-size: 0.9em; margin-top: 5px;">Pilot Test Hub</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>Q2 2026</strong>
+                            <p style="font-size: 0.9em; margin-top: 5px;">Soft Launch Akademik</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>Q3 2026</strong>
+                            <p style="font-size: 0.9em; margin-top: 5px;">Training Reviewer</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <strong>Q4 2026</strong>
+                            <p style="font-size: 0.9em; margin-top: 5px;">Full Launch + Industri</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 10: ROADMAP IMPLEMENTASI PRAKTIS -->
+        <div class="section">
+            <div class="section-title">
+                <span>✅</span>
+                <span>Roadmap Implementasi Praktis</span>
+            </div>
+            
+            <div class="key-points">
+                <h3>Action Plan 2025-2026 (Fase II)</h3>
+                <ul>
+                    <li><strong>Q4 2025:</strong> Finalisasi SOP akses, pembentukan DAC/SAC, launching portal submission online</li>
+                    <li><strong>Q1 2026:</strong> Pilot test dengan 3-5 proposal dari Hub, evaluasi & refinement SOP</li>
+                    <li><strong>Q2 2026:</strong> Soft launch akses eksternal untuk akademik (universitas, BRIN)</li>
+                    <li><strong>Q3 2026:</strong> Training untuk reviewer & Hub tentang proses evaluasi</li>
+                    <li><strong>Q4 2026:</strong> Full launch termasuk industri/komersial, publikasi first success case</li>
+                </ul>
+            </div>
+            
+            <div class="key-points" style="background: #cce5ff; border-left-color: #007bff;">
+                <h3 style="color: #004085;">Rekomendasi Utama untuk BGSI</h3>
+                <ul style="color: #004085;">
+                    <li>Adopsi sistem scoring terstandar dengan bobot yang jelas untuk menghindari subjektivitas</li>
+                    <li>Bangun sistem digital terintegrasi untuk submission, tracking, dan audit trail</li>
+                    <li>Rekrut anggota komite dengan representasi multidisiplin & independensi yang terjaga</li>
+                    <li>Tetapkan SLA yang realistis namun responsif (max 6 minggu untuk keputusan)</li>
+                    <li>Develop template agreement (DTA/MTA) yang jelas & enforceable secara hukum</li>
+                    <li>Build capacity Hub untuk partisipasi aktif dalam proses review sampel mereka</li>
+                    <li>Publikasikan annual report transparansi: jumlah aplikasi, approval rate, jenis riset</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- BAGIAN 10: KESIMPULAN -->
+        <div class="section">
+            <div class="section-title">
+                <span>📌</span>
+                <span>Kesimpulan & Key Takeaways</span>
+            </div>
+            <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                Mekanisme seleksi akses data dan sampel yang <strong>transparan & akuntabel</strong> adalah fondasi kepercayaan ekosistem BGSI. 
+                Dengan framework evaluasi yang robust, struktur governance yang jelas, dan manajemen risiko yang proaktif, 
+                BGSI dapat memfasilitasi <strong>kolaborasi riset yang produktif</strong> sambil tetap menjaga <strong>kedaulatan data</strong>, 
+                <strong>privasi partisipan</strong>, dan <strong>keadilan akses</strong> untuk semua stakeholder.
+            </p>
+            
+            <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h4 style="color: #1e3c72; margin-bottom: 15px;">🎯 5 Pilar Kunci Mekanisme Akses yang Efektif:</h4>
+                <ol style="color: #555; line-height: 2; margin-left: 20px;">
+                    <li><strong>Transparansi Proses:</strong> Kriteria jelas, timeline pasti, feedback konstruktif</li>
+                    <li><strong>Akuntabilitas Keputusan:</strong> Dokumentasi lengkap, audit trail, mekanisme banding</li>
+                    <li><strong>Independensi Review:</strong> Komite multidisiplin, COI management, rotasi anggota</li>
+                    <li><strong>Keadilan Akses:</strong> Kuota emerging institutions, biaya subsidized, mentoring</li>
+                    <li><strong>Monitoring Berkelanjutan:</strong> KPI terukur, evaluasi periodik, continuous improvement</li>
+                </ol>
+            </div>
+            
+            <div style="background: #e8f4f8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                <h4 style="color: #0c5460; margin-bottom: 15px;">💼 Call to Action untuk Stakeholders FGD:</h4>
+                <ul style="color: #0c5460; line-height: 1.8; margin-left: 20px;">
+                    <li><strong>BB Binomika:</strong> Lead pembentukan DAC/SAC dan finalisasi SOP Q4 2025</li>
+                    <li><strong>RS Hubs:</strong> Designate focal point untuk review sampel & siapkan capacity</li>
+                    <li><strong>Pakar Hukum & Bioetika:</strong> Kontribusi dalam penyusunan template DTA/MTA</li>
+                    <li><strong>IT & Keamanan:</strong> Develop sistem digital submission & audit trail terintegrasi</li>
+                    <li><strong>Kemenkes/BRIN/Institusi:</strong> Provide input untuk kriteria scoring & KPI</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DISKUSI PANEL -->
+        <div style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px;">
+            <h3 style="margin-bottom: 15px; font-size: 1.4em;">💬 Pertanyaan untuk Diskusi Panel</h3>
+            <ol style="line-height: 2; margin-left: 20px;">
+                <li>Bagaimana menyeimbangkan <strong>selektivitas review</strong> dengan <strong>kecepatan akses</strong> yang dibutuhkan peneliti?</li>
+                <li>Apakah model <strong>biaya akses</strong> (credit-based vs tiering) paling sesuai untuk konteks Indonesia?</li>
+                <li>Bagaimana memastikan <strong>independensi komite</strong> dari tekanan institusional/politik?</li>
+                <li>Mekanisme apa yang efektif untuk <strong>enforce benefit sharing</strong> dan mencegah "data colonialism"?</li>
+                <li>Bagaimana <strong>melibatkan Hub hospitals</strong> secara konstruktif tanpa memperlambat proses?</li>
+            </ol>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="margin-top: 40px; text-align: center; padding: 20px; border-top: 2px solid #e0e0e0;">
+            <p style="color: #999; font-size: 0.9em;">
+                Presentasi oleh dr. Ahmad Hidayat, MSc, MBA | Konsultan INA-CRC<br>
+                FGD Akses Data & Spesimen BGSI | Swiss-Bellin Cawang, 29 Sept - 1 Okt 2025
+            </p>
+        </div>
+    </div>
+</body>
+</html>
