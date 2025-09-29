@@ -94,7 +94,7 @@ const NusantaraGenomicSlide = () => {
       </div>
 
       {/* Content Area */}
-      <div className="bg-white rounded-xl shadow-xl p-6 lg:p-10 max-w-7xl mx-auto">
+      <div className="bg-white rounded-xl shadow-xl p-6 lg:p-10 max-w-none">
         {activeTab === 'overview' && (
           <div className="space-y-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-red-700 mb-6 text-center">
@@ -146,15 +146,15 @@ const NusantaraGenomicSlide = () => {
               </div>
             </div>
 
-            <div className="bg-yellow-50 border-2 border-yellow-400 p-6 lg:p-8 rounded-xl shadow-lg">
-              <h3 className="font-bold text-yellow-900 mb-4 text-xl lg:text-2xl text-center">💡 Foundation yang Sudah Ada:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-                <div className="bg-white p-3 lg:p-4 rounded-lg shadow-sm text-base lg:text-lg">✅ 9,000+ genome samples (BGSi)</div>
-                <div className="bg-white p-3 lg:p-4 rounded-lg shadow-sm text-base lg:text-lg">✅ SATUSEHAT platform integration</div>
-                <div className="bg-white p-3 lg:p-4 rounded-lg shadow-sm text-base lg:text-lg">✅ SatuDNA portal (7 priority diseases)</div>
-                <div className="bg-white p-3 lg:p-4 rounded-lg shadow-sm text-base lg:text-lg">✅ UU PDP 27/2022 + GR 28/2024</div>
-                <div className="bg-white p-3 lg:p-4 rounded-lg shadow-sm text-base lg:text-lg">✅ Presidential mandate (Satu Data)</div>
-                <div className="bg-white p-3 lg:p-4 rounded-lg shadow-sm text-base lg:text-lg">✅ International precedent (Māori model)</div>
+            <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-lg">
+              <h3 className="font-bold text-yellow-900 mb-2">💡 Foundation yang Sudah Ada:</h3>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div>✅ 9,000+ genome samples (BGSi)</div>
+                <div>✅ SATUSEHAT platform integration</div>
+                <div>✅ SatuDNA portal (7 priority diseases)</div>
+                <div>✅ UU PDP 27/2022 + GR 28/2024</div>
+                <div>✅ Presidential mandate (Satu Data)</div>
+                <div>✅ International precedent (Māori model)</div>
               </div>
             </div>
           </div>
@@ -187,22 +187,22 @@ const NusantaraGenomicSlide = () => {
               ))}
             </div>
 
-            <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 lg:p-8 rounded-xl border-2 border-purple-400 mt-6">
-              <h3 className="font-bold text-gray-800 mb-4 text-center text-xl lg:text-2xl">
+            <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-4 rounded-lg border-2 border-purple-400 mt-4">
+              <h3 className="font-bold text-gray-800 mb-2 text-center">
                 🌟 Unique Value Proposition Indonesia
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-                <div className="bg-white p-4 lg:p-6 rounded-lg text-center shadow-md">
-                  <div className="font-semibold text-base lg:text-lg">Community-First</div>
-                  <div className="text-gray-600 text-sm lg:text-base mt-1">vs Institution-First</div>
+              <div className="grid grid-cols-3 gap-2 text-xs">
+                <div className="bg-white p-2 rounded text-center">
+                  <div className="font-semibold">Community-First</div>
+                  <div className="text-gray-600">vs Institution-First</div>
                 </div>
-                <div className="bg-white p-4 lg:p-6 rounded-lg text-center shadow-md">
-                  <div className="font-semibold text-base lg:text-lg">Benefit-Sharing Mandatory</div>
-                  <div className="text-gray-600 text-sm lg:text-base mt-1">vs Optional CSR</div>
+                <div className="bg-white p-2 rounded text-center">
+                  <div className="font-semibold">Benefit-Sharing Mandatory</div>
+                  <div className="text-gray-600">vs Optional CSR</div>
                 </div>
-                <div className="bg-white p-4 lg:p-6 rounded-lg text-center shadow-md">
-                  <div className="font-semibold text-base lg:text-lg">Values-Anchored</div>
-                  <div className="text-gray-600 text-sm lg:text-base mt-1">vs Purely Procedural</div>
+                <div className="bg-white p-2 rounded text-center">
+                  <div className="font-semibold">Values-Anchored</div>
+                  <div className="text-gray-600">vs Purely Procedural</div>
                 </div>
               </div>
             </div>
@@ -236,10 +236,10 @@ const NusantaraGenomicSlide = () => {
               </table>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-8">
-              <div className="bg-blue-50 border-2 border-blue-400 p-6 lg:p-8 rounded-xl shadow-lg">
-                <h3 className="font-bold text-blue-800 mb-4 text-xl lg:text-2xl text-center">📚 Learn from Global Models</h3>
-                <div className="space-y-3 text-base lg:text-lg">
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <div className="bg-blue-50 border-2 border-blue-400 p-4 rounded-lg">
+                <h3 className="font-bold text-blue-800 mb-3">📚 Learn from Global Models</h3>
+                <div className="space-y-2 text-sm">
                   <div>🇬🇧 <span className="font-semibold">UK Biobank:</span> Access infrastructure</div>
                   <div>🇺🇸 <span className="font-semibold">All of Us:</span> Public data release</div>
                   <div>🇸🇬 <span className="font-semibold">SG10K:</span> Multi-ethnic focus</div>
@@ -248,9 +248,9 @@ const NusantaraGenomicSlide = () => {
                 </div>
               </div>
 
-              <div className="bg-green-50 border-2 border-green-400 p-6 lg:p-8 rounded-xl shadow-lg">
-                <h3 className="font-bold text-green-800 mb-4 text-xl lg:text-2xl text-center">🚀 Indonesia's Innovation</h3>
-                <div className="space-y-3 text-base lg:text-lg">
+              <div className="bg-green-50 border-2 border-green-400 p-4 rounded-lg">
+                <h3 className="font-bold text-green-800 mb-3">🚀 Indonesia's Innovation</h3>
+                <div className="space-y-2 text-sm">
                   <div>✅ Community co-ownership model</div>
                   <div>✅ Consensus-based access decisions</div>
                   <div>✅ Mandatory return of results</div>
@@ -261,11 +261,11 @@ const NusantaraGenomicSlide = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-6 lg:p-8 rounded-xl border-2 border-orange-400 shadow-lg">
-              <h3 className="font-bold text-center text-gray-800 mb-4 text-xl lg:text-2xl">
+            <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-lg border-2 border-orange-400">
+              <h3 className="font-bold text-center text-gray-800 mb-2">
                 🎯 Strategic Positioning: From Follower to Leader
               </h3>
-              <div className="text-center text-base lg:text-lg text-gray-700">
+              <div className="text-center text-sm text-gray-700">
                 <strong>Precedent:</strong> New Zealand's Māori biobank model shows community-engaged governance 
                 <span className="text-green-700 font-bold"> INCREASES participation</span> & trust.
                 <br/>
@@ -346,36 +346,36 @@ const NusantaraGenomicSlide = () => {
               </div>
             </div>
 
-            <div className="bg-yellow-50 border-2 border-yellow-400 p-6 lg:p-8 rounded-xl shadow-lg">
-              <h3 className="font-bold text-yellow-900 mb-4 text-xl lg:text-2xl text-center">🎯 Quick Wins (6 months)</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
-                <div className="bg-white p-4 rounded-lg shadow-md text-base lg:text-lg">💊 <strong>Pharmacogenomic warfarin dosing</strong> untuk Indonesian population</div>
-                <div className="bg-white p-4 rounded-lg shadow-md text-base lg:text-lg">🏥 <strong>"Kampung Genomik Sehat"</strong> pilot di 10 villages</div>
-                <div className="bg-white p-4 rounded-lg shadow-md text-base lg:text-lg">📱 <strong>SatuDNA mobile app</strong> launch with participant engagement</div>
-                <div className="bg-white p-4 rounded-lg shadow-md text-base lg:text-lg">🎤 <strong>International conference presentation</strong> - thought leadership</div>
+            <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-lg">
+              <h3 className="font-bold text-yellow-900 mb-2">🎯 Quick Wins (6 months)</h3>
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div>💊 <strong>Pharmacogenomic warfarin dosing</strong> untuk Indonesian population</div>
+                <div>🏥 <strong>"Kampung Genomik Sehat"</strong> pilot di 10 villages</div>
+                <div>📱 <strong>SatuDNA mobile app</strong> launch with participant engagement</div>
+                <div>🎤 <strong>International conference presentation</strong> - thought leadership</div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-green-100 to-blue-100 p-6 lg:p-8 rounded-xl border-2 border-green-400 mt-6 shadow-lg">
-              <h3 className="font-bold text-center text-gray-800 text-xl lg:text-2xl mb-6">
+            <div className="bg-gradient-to-r from-green-100 to-blue-100 p-4 rounded-lg border-2 border-green-400 mt-4">
+              <h3 className="font-bold text-center text-gray-800 text-lg mb-2">
                 💪 Critical Success Factors
               </h3>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-                <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md text-center">
-                  <div className="text-3xl lg:text-4xl mb-3">🤝</div>
-                  <div className="font-semibold text-base lg:text-lg">Community Trust</div>
+              <div className="grid grid-cols-4 gap-2 text-xs text-center">
+                <div className="bg-white p-2 rounded">
+                  <div className="text-2xl mb-1">🤝</div>
+                  <div className="font-semibold">Community Trust</div>
                 </div>
-                <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md text-center">
-                  <div className="text-3xl lg:text-4xl mb-3">⚖️</div>
-                  <div className="font-semibold text-base lg:text-lg">Policy Support</div>
+                <div className="bg-white p-2 rounded">
+                  <div className="text-2xl mb-1">⚖️</div>
+                  <div className="font-semibold">Policy Support</div>
                 </div>
-                <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md text-center">
-                  <div className="text-3xl lg:text-4xl mb-3">💰</div>
-                  <div className="font-semibold text-base lg:text-lg">Funding Sustainability</div>
+                <div className="bg-white p-2 rounded">
+                  <div className="text-2xl mb-1">💰</div>
+                  <div className="font-semibold">Funding Sustainability</div>
                 </div>
-                <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md text-center">
-                  <div className="text-3xl lg:text-4xl mb-3">🌐</div>
-                  <div className="font-semibold text-base lg:text-lg">International Recognition</div>
+                <div className="bg-white p-2 rounded">
+                  <div className="text-2xl mb-1">🌐</div>
+                  <div className="font-semibold">International Recognition</div>
                 </div>
               </div>
             </div>
