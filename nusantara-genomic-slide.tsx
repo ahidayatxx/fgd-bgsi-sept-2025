@@ -51,27 +51,27 @@ const NusantaraGenomicSlide = () => {
   ];
 
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-8 font-sans overflow-y-auto">
+    <div className="w-full min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4 lg:p-12 font-sans overflow-y-auto">
       {/* Header */}
-      <div className="bg-gradient-to-r from-red-600 via-white to-red-600 p-6 rounded-lg shadow-lg mb-6">
-        <div className="flex items-center justify-between">
+      <div className="bg-gradient-to-r from-red-600 via-white to-red-600 p-6 lg:p-8 rounded-xl shadow-xl mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex-1">
-            <h1 className="text-3xl font-bold text-gray-800 mb-2">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-3 leading-tight">
               NUSANTARA GENOMIC COMMONS
             </h1>
-            <p className="text-lg text-gray-700 italic">
+            <p className="text-xl lg:text-2xl text-gray-700 italic font-medium">
               Biobank Berbasis Pancasila: Dari Copy-Paste menuju Kepemimpinan Global
             </p>
           </div>
-          <div className="text-right">
-            <div className="text-sm font-semibold text-gray-600">FGD Akses Data & Spesimen</div>
-            <div className="text-xs text-gray-500">BB Binomika • 29 Sep - 1 Okt 2025</div>
+          <div className="text-left lg:text-right bg-white/80 p-4 rounded-lg">
+            <div className="text-base lg:text-lg font-semibold text-gray-700">FGD Akses Data & Spesimen</div>
+            <div className="text-sm lg:text-base text-gray-600 font-medium">BB Binomika • 29 Sep - 1 Okt 2025</div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex gap-2 mb-6">
+      <div className="flex flex-wrap gap-3 lg:gap-4 mb-8 justify-center lg:justify-start">
         {[
           { id: 'overview', label: 'Strategic Gap', icon: '🎯' },
           { id: 'pancasila', label: 'Pancasila Framework', icon: '🇮🇩' },
@@ -81,30 +81,30 @@ const NusantaraGenomicSlide = () => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              activeTab === tab.id 
-                ? 'bg-red-600 text-white shadow-lg' 
-                : 'bg-white text-gray-700 hover:bg-gray-100'
+            className={`px-6 py-3 lg:px-8 lg:py-4 rounded-xl font-semibold transition-all text-base lg:text-lg ${
+              activeTab === tab.id
+                ? 'bg-red-600 text-white shadow-xl scale-105'
+                : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md hover:shadow-lg'
             }`}
           >
-            <span className="mr-2">{tab.icon}</span>
+            <span className="mr-2 lg:mr-3 text-lg lg:text-xl">{tab.icon}</span>
             {tab.label}
           </button>
         ))}
       </div>
 
       {/* Content Area */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
+      <div className="bg-white rounded-xl shadow-xl p-6 lg:p-10 max-w-none">
         {activeTab === 'overview' && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-red-700 mb-4">
+          <div className="space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-red-700 mb-6 text-center lg:text-left">
               🔍 Yang BELUM Terlihat: Strategic Opportunity Gap
             </h2>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-red-50 border-l-4 border-red-600 p-4 rounded">
-                <h3 className="font-bold text-red-800 mb-2">❌ Asumsi yang Perlu Diubah</h3>
-                <ul className="text-sm space-y-1 text-gray-700">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8">
+              <div className="bg-red-50 border-l-4 border-red-600 p-6 lg:p-8 rounded-lg">
+                <h3 className="font-bold text-red-800 mb-4 text-lg lg:text-xl">❌ Asumsi yang Perlu Diubah</h3>
+                <ul className="text-base lg:text-lg space-y-2 text-gray-700">
                   <li>• Best practices global = model untuk diadopsi</li>
                   <li>• Indonesia harus "catch up" dengan UK/NIH/China</li>
                   <li>• Individualistic consent adalah gold standard</li>
@@ -112,9 +112,9 @@ const NusantaraGenomicSlide = () => {
                 </ul>
               </div>
               
-              <div className="bg-green-50 border-l-4 border-green-600 p-4 rounded">
-                <h3 className="font-bold text-green-800 mb-2">✅ Paradigm Baru: Leapfrog!</h3>
-                <ul className="text-sm space-y-1 text-gray-700">
+              <div className="bg-green-50 border-l-4 border-green-600 p-6 lg:p-8 rounded-lg">
+                <h3 className="font-bold text-green-800 mb-4 text-lg lg:text-xl">✅ Paradigm Baru: Leapfrog!</h3>
+                <ul className="text-base lg:text-lg space-y-2 text-gray-700">
                   <li>• Best practices = lessons to integrate selectively</li>
                   <li>• Indonesia bisa MEMIMPIN ethical genomics</li>
                   <li>• Community-based governance lebih sustainable</li>
@@ -123,11 +123,11 @@ const NusantaraGenomicSlide = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-100 to-green-100 p-4 rounded-lg border-2 border-blue-400">
-              <h3 className="font-bold text-gray-800 mb-3 text-center text-lg">
+            <div className="bg-gradient-to-r from-blue-100 to-green-100 p-6 lg:p-8 rounded-xl border-2 border-blue-400">
+              <h3 className="font-bold text-gray-800 mb-6 text-center text-xl lg:text-2xl">
                 🎯 The "Ace Result" Strategy
               </h3>
-              <div className="grid grid-cols-3 gap-3 text-center">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 text-center">
                 <div className="bg-white p-3 rounded shadow">
                   <div className="text-2xl mb-1">📱</div>
                   <div className="text-xs font-semibold">Seperti Indonesia</div>
@@ -161,23 +161,23 @@ const NusantaraGenomicSlide = () => {
         )}
 
         {activeTab === 'pancasila' && (
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-red-700 mb-4">
+          <div className="space-y-6 lg:space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-red-700 mb-6 text-center lg:text-left">
               🇮🇩 Operasionalisasi Pancasila dalam Biobank Governance
             </h2>
             
-            <div className="grid grid-cols-1 gap-3">
+            <div className="grid grid-cols-1 gap-4 lg:gap-6">
               {pancasilaPillars.map((pillar, idx) => (
-                <div key={idx} className={`${pillar.color} border-2 p-4 rounded-lg hover:shadow-lg transition-shadow`}>
-                  <div className="flex items-start gap-3">
-                    <div className="text-3xl">{pillar.icon}</div>
+                <div key={idx} className={`${pillar.color} border-2 p-6 lg:p-8 rounded-xl hover:shadow-xl transition-all duration-300 hover:scale-[1.02]`}>
+                  <div className="flex items-start gap-4 lg:gap-6">
+                    <div className="text-4xl lg:text-5xl">{pillar.icon}</div>
                     <div className="flex-1">
-                      <h3 className="font-bold text-gray-800 mb-1">{pillar.sila}</h3>
-                      <div className="text-sm">
-                        <div className="font-semibold text-gray-700 mb-1">
+                      <h3 className="font-bold text-gray-800 mb-3 text-lg lg:text-xl">{pillar.sila}</h3>
+                      <div className="space-y-2">
+                        <div className="font-semibold text-gray-700 text-base lg:text-lg">
                           {'→'} {pillar.implementation}
                         </div>
-                        <div className="text-gray-600 italic">
+                        <div className="text-gray-600 italic text-base lg:text-lg">
                           {pillar.detail}
                         </div>
                       </div>
@@ -210,26 +210,26 @@ const NusantaraGenomicSlide = () => {
         )}
 
         {activeTab === 'comparison' && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-red-700 mb-4">
+          <div className="space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-red-700 mb-6 text-center lg:text-left">
               🔄 Paradigm Shift: Western Models vs Nusantara Commons
             </h2>
             
-            <div className="overflow-hidden rounded-lg border-2 border-gray-300">
+            <div className="overflow-hidden rounded-xl border-2 border-gray-300 shadow-lg">
               <table className="w-full">
                 <thead className="bg-gradient-to-r from-red-600 to-red-700 text-white">
                   <tr>
-                    <th className="p-3 text-left">Dimensi</th>
-                    <th className="p-3 text-left">Western Models</th>
-                    <th className="p-3 text-left bg-green-700">Nusantara Genomic Commons</th>
+                    <th className="p-4 lg:p-6 text-left text-base lg:text-lg font-bold">Dimensi</th>
+                    <th className="p-4 lg:p-6 text-left text-base lg:text-lg font-bold">Western Models</th>
+                    <th className="p-4 lg:p-6 text-left bg-green-700 text-base lg:text-lg font-bold">Nusantara Genomic Commons</th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonData.map((row, idx) => (
                     <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                      <td className="p-3 font-semibold text-gray-700">{row.aspect}</td>
-                      <td className="p-3 text-gray-600">{row.western}</td>
-                      <td className="p-3 font-semibold text-green-800 bg-green-50">{row.nusantara}</td>
+                      <td className="p-4 lg:p-6 font-semibold text-gray-700 text-base lg:text-lg">{row.aspect}</td>
+                      <td className="p-4 lg:p-6 text-gray-600 text-base lg:text-lg">{row.western}</td>
+                      <td className="p-4 lg:p-6 font-semibold text-green-800 bg-green-50 text-base lg:text-lg">{row.nusantara}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -276,15 +276,15 @@ const NusantaraGenomicSlide = () => {
         )}
 
         {activeTab === 'roadmap' && (
-          <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-red-700 mb-4">
+          <div className="space-y-6 lg:space-y-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-red-700 mb-6 text-center lg:text-left">
               🚀 100-Day Implementation Blitz
             </h2>
             
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-blue-50 border-2 border-blue-400 p-4 rounded-lg">
-                <h3 className="font-bold text-blue-800 mb-2">Days 1-30: Coalition</h3>
-                <ul className="text-xs space-y-1">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+              <div className="bg-blue-50 border-2 border-blue-400 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <h3 className="font-bold text-blue-800 mb-4 text-lg lg:text-xl">Days 1-30: Coalition</h3>
+                <ul className="text-base lg:text-lg space-y-2">
                   <li>✓ Secure Menkes buy-in</li>
                   <li>✓ Align Dirjen terkait</li>
                   <li>✓ Engage professional societies</li>
@@ -292,9 +292,9 @@ const NusantaraGenomicSlide = () => {
                 </ul>
               </div>
 
-              <div className="bg-green-50 border-2 border-green-400 p-4 rounded-lg">
-                <h3 className="font-bold text-green-800 mb-2">Days 31-60: Design</h3>
-                <ul className="text-xs space-y-1">
+              <div className="bg-green-50 border-2 border-green-400 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <h3 className="font-bold text-green-800 mb-4 text-lg lg:text-xl">Days 31-60: Design</h3>
+                <ul className="text-base lg:text-lg space-y-2">
                   <li>✓ Draft SOPs & technical specs</li>
                   <li>✓ SATUSEHAT integration architecture</li>
                   <li>✓ Draft Permenkes Biobank Nasional</li>
@@ -302,9 +302,9 @@ const NusantaraGenomicSlide = () => {
                 </ul>
               </div>
 
-              <div className="bg-purple-50 border-2 border-purple-400 p-4 rounded-lg">
-                <h3 className="font-bold text-purple-800 mb-2">Days 61-100: Launch</h3>
-                <ul className="text-xs space-y-1">
+              <div className="bg-purple-50 border-2 border-purple-400 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <h3 className="font-bold text-purple-800 mb-4 text-lg lg:text-xl">Days 61-100: Launch</h3>
+                <ul className="text-base lg:text-lg space-y-2">
                   <li>✓ Select 3 pilot sites</li>
                   <li>✓ Community kickoff ceremonies</li>
                   <li>✓ Press conference launch</li>
@@ -313,13 +313,13 @@ const NusantaraGenomicSlide = () => {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-4 rounded-lg border-2 border-red-400">
-              <h3 className="font-bold text-gray-800 mb-3">📊 3-Horizon Strategy</h3>
-              <div className="grid grid-cols-3 gap-3 text-xs">
-                <div className="bg-white p-3 rounded shadow">
-                  <div className="font-bold text-blue-700 mb-1">Horizon 1 (Yr 0-2)</div>
-                  <div className="text-gray-600">Build Foundation</div>
-                  <ul className="mt-2 space-y-1">
+            <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-6 lg:p-8 rounded-xl border-2 border-red-400 shadow-lg">
+              <h3 className="font-bold text-gray-800 mb-6 text-xl lg:text-2xl text-center">📊 3-Horizon Strategy</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+                <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                  <div className="font-bold text-blue-700 mb-2 text-base lg:text-lg">Horizon 1 (Yr 0-2)</div>
+                  <div className="text-gray-600 text-base lg:text-lg font-medium mb-3">Build Foundation</div>
+                  <ul className="mt-3 space-y-2 text-sm lg:text-base">
                     <li>• Governance structures</li>
                     <li>• 3-5 province pilots</li>
                     <li>• First pharmacogenomic apps</li>
@@ -384,17 +384,17 @@ const NusantaraGenomicSlide = () => {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 bg-gradient-to-r from-gray-800 to-red-900 text-white p-4 rounded-lg">
-        <div className="flex items-center justify-between">
+      <div className="mt-8 lg:mt-12 bg-gradient-to-r from-gray-800 to-red-900 text-white p-6 lg:p-10 rounded-xl shadow-xl">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div>
-            <div className="font-bold text-lg">dr. Ahmad Hidayat, MSc, MBA</div>
-            <div className="text-sm opacity-90">Ketua TWG SATUSEHAT • Expert Panel Regulatory Sandbox Digital Health Innovation</div>
+            <div className="font-bold text-xl lg:text-2xl mb-2">dr. Ahmad Hidayat, MSc, MBA</div>
+            <div className="text-base lg:text-lg opacity-90">Ketua TWG SATUSEHAT • Expert Panel Regulatory Sandbox Digital Health Innovation</div>
           </div>
-          <div className="text-right text-sm">
-            <div className="font-bold text-yellow-300 text-lg mb-1">
+          <div className="text-left lg:text-right">
+            <div className="font-bold text-yellow-300 text-lg lg:text-xl mb-3 italic">
               "Think like a startup, execute like an enterprise, impact like a social movement"
             </div>
-            <div className="italic">Indonesia tidak perlu mengikuti - Indonesia bisa memimpin.</div>
+            <div className="italic text-base lg:text-lg font-medium">Indonesia tidak perlu mengikuti - Indonesia bisa memimpin.</div>
           </div>
         </div>
       </div>
