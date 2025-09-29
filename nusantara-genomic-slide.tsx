@@ -281,7 +281,7 @@ const NusantaraGenomicSlide = () => {
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div>
             <div className="font-bold text-xl lg:text-2xl mb-2">dr. Ahmad Hidayat, MSc, MBA</div>
-            <div className="text-base lg:text-lg opacity-90">Ketua TWG SATUSEHAT • Expert Panel Regulatory Sandbox Digital Health Innovation</div>
+            <div className="text-base lg:text-lg opacity-90">Konsultan INA-CRC • Ketua TWG SATUSEHAT • Expert Panel Regulatory Sandbox Digital Health Innovation</div>
           </div>
           <div className="text-left lg:text-right">
             <div className="font-bold text-yellow-300 text-lg lg:text-xl mb-3 italic">
