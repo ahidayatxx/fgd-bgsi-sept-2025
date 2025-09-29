@@ -75,8 +75,7 @@ const NusantaraGenomicSlide = () => {
         {[
           { id: 'overview', label: 'Strategic Gap', icon: '🎯' },
           { id: 'pancasila', label: 'Pancasila Framework', icon: '🇮🇩' },
-          { id: 'comparison', label: 'Paradigm Shift', icon: '🔄' },
-          { id: 'roadmap', label: 'Implementation', icon: '🚀' }
+          { id: 'comparison', label: 'Paradigm Shift', icon: '🔄' }
         ].map(tab => (
           <button
             key={tab.id}
@@ -275,112 +274,6 @@ const NusantaraGenomicSlide = () => {
           </div>
         )}
 
-        {activeTab === 'roadmap' && (
-          <div className="space-y-6 lg:space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-bold text-red-700 mb-6 text-center">
-              🚀 100-Day Implementation Blitz
-            </h2>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-              <div className="bg-blue-50 border-2 border-blue-400 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <h3 className="font-bold text-blue-800 mb-4 text-lg lg:text-xl">Days 1-30: Coalition</h3>
-                <ul className="text-base lg:text-lg space-y-2">
-                  <li>✓ Secure Menkes buy-in</li>
-                  <li>✓ Align Dirjen terkait</li>
-                  <li>✓ Engage professional societies</li>
-                  <li>✓ Build multi-stakeholder consensus</li>
-                </ul>
-              </div>
-
-              <div className="bg-green-50 border-2 border-green-400 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <h3 className="font-bold text-green-800 mb-4 text-lg lg:text-xl">Days 31-60: Design</h3>
-                <ul className="text-base lg:text-lg space-y-2">
-                  <li>✓ Draft SOPs & technical specs</li>
-                  <li>✓ SATUSEHAT integration architecture</li>
-                  <li>✓ Draft Permenkes Biobank Nasional</li>
-                  <li>✓ Community engagement guidelines</li>
-                </ul>
-              </div>
-
-              <div className="bg-purple-50 border-2 border-purple-400 p-6 lg:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                <h3 className="font-bold text-purple-800 mb-4 text-lg lg:text-xl">Days 61-100: Launch</h3>
-                <ul className="text-base lg:text-lg space-y-2">
-                  <li>✓ Select 3 pilot sites</li>
-                  <li>✓ Community kickoff ceremonies</li>
-                  <li>✓ Press conference launch</li>
-                  <li>✓ First samples collected</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-red-50 to-yellow-50 p-6 lg:p-8 rounded-xl border-2 border-red-400 shadow-lg">
-              <h3 className="font-bold text-gray-800 mb-6 text-xl lg:text-2xl text-center">📊 3-Horizon Strategy</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-                <div className="bg-white p-4 lg:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <div className="font-bold text-blue-700 mb-2 text-base lg:text-lg">Horizon 1 (Yr 0-2)</div>
-                  <div className="text-gray-600 text-base lg:text-lg font-medium mb-3">Build Foundation</div>
-                  <ul className="mt-3 space-y-2 text-sm lg:text-base">
-                    <li>• Governance structures</li>
-                    <li>• 3-5 province pilots</li>
-                    <li>• First pharmacogenomic apps</li>
-                  </ul>
-                </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <div className="font-bold text-green-700 mb-1">Horizon 2 (Yr 3-5)</div>
-                  <div className="text-gray-600">Scale & Integrate</div>
-                  <ul className="mt-2 space-y-1">
-                    <li>• National rollout (38 prov)</li>
-                    <li>• Deep SATUSEHAT integration</li>
-                    <li>• ASEAN partnerships</li>
-                  </ul>
-                </div>
-                <div className="bg-white p-3 rounded shadow">
-                  <div className="font-bold text-purple-700 mb-1">Horizon 3 (Yr 6-10)</div>
-                  <div className="text-gray-600">Lead & Transform</div>
-                  <ul className="mt-2 space-y-1">
-                    <li>• Global exemplar status</li>
-                    <li>• Export governance model</li>
-                    <li>• Economic engine (biotech)</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded-lg">
-              <h3 className="font-bold text-yellow-900 mb-2">🎯 Quick Wins (6 months)</h3>
-              <div className="grid grid-cols-2 gap-2 text-sm">
-                <div>💊 <strong>Pharmacogenomic warfarin dosing</strong> untuk Indonesian population</div>
-                <div>🏥 <strong>"Kampung Genomik Sehat"</strong> pilot di 10 villages</div>
-                <div>📱 <strong>SatuDNA mobile app</strong> launch with participant engagement</div>
-                <div>🎤 <strong>International conference presentation</strong> - thought leadership</div>
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-r from-green-100 to-blue-100 p-4 rounded-lg border-2 border-green-400 mt-4">
-              <h3 className="font-bold text-center text-gray-800 text-lg mb-2">
-                💪 Critical Success Factors
-              </h3>
-              <div className="grid grid-cols-4 gap-2 text-xs text-center">
-                <div className="bg-white p-2 rounded">
-                  <div className="text-2xl mb-1">🤝</div>
-                  <div className="font-semibold">Community Trust</div>
-                </div>
-                <div className="bg-white p-2 rounded">
-                  <div className="text-2xl mb-1">⚖️</div>
-                  <div className="font-semibold">Policy Support</div>
-                </div>
-                <div className="bg-white p-2 rounded">
-                  <div className="text-2xl mb-1">💰</div>
-                  <div className="font-semibold">Funding Sustainability</div>
-                </div>
-                <div className="bg-white p-2 rounded">
-                  <div className="text-2xl mb-1">🌐</div>
-                  <div className="font-semibold">International Recognition</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Footer */}
