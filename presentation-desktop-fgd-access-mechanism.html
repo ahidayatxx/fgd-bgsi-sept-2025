@@ -638,20 +638,20 @@
                 <span>Lessons Learned dari Best Practices Global</span>
             </div>
 
-            <div class="framework-grid">
-                <div class="framework-card">
-                    <h3>🇬🇧 UK Biobank Model</h3>
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 25px; margin: 30px 0;">
+                <div class="framework-card" style="border-left-color: #3498db;">
+                    <h3 style="color: #3498db;">🇬🇧 UK Biobank Model</h3>
                     <ul>
-                        <li>2-tier access: Open (agregat) vs Controlled (individual-level)</li>
-                        <li>Biaya akses tiering: £60k-£180k untuk 3 tahun</li>
-                        <li>Independent Access Review Committee</li>
+                        <li>2-tier access: Open vs Controlled</li>
+                        <li>Biaya tiering: £60k-£180k/3 tahun</li>
+                        <li>Independent Review Committee</li>
                         <li>Publikasi wajib dalam 2 tahun</li>
-                        <li>Return of aggregate results ke partisipan</li>
+                        <li>Return aggregate results ke partisipan</li>
                     </ul>
                 </div>
 
-                <div class="framework-card">
-                    <h3>🇺🇸 All of Us (NIH) Model</h3>
+                <div class="framework-card" style="border-left-color: #e74c3c;">
+                    <h3 style="color: #e74c3c;">🇺🇸 All of Us (NIH) Model</h3>
                     <ul>
                         <li>Researcher Workbench untuk akses terkontrol</li>
                         <li>Public Data Tier tanpa approval</li>
@@ -661,8 +661,8 @@
                     </ul>
                 </div>
 
-                <div class="framework-card">
-                    <h3>🇸🇬 SG10K & TRUST Platform</h3>
+                <div class="framework-card" style="border-left-color: #27ae60;">
+                    <h3 style="color: #27ae60;">🇸🇬 SG10K & TRUST Platform</h3>
                     <ul>
                         <li>Data Access Committee multidisiplin</li>
                         <li>Main PI harus dari Singapura (sovereignty)</li>
@@ -671,14 +671,48 @@
                         <li>Annual report publikasi & impact</li>
                     </ul>
                 </div>
+
+                <div class="framework-card" style="border-left-color: #9b59b6;">
+                    <h3 style="color: #9b59b6;">🇪🇺 BBMRI-ERIC Model</h3>
+                    <ul>
+                        <li>Pan-regional coordination framework</li>
+                        <li>Standardized access procedures</li>
+                        <li>Multi-country ethical approval</li>
+                        <li>Harmonized data formats</li>
+                        <li>Cross-border collaboration protocols</li>
+                    </ul>
+                </div>
+
+                <div class="framework-card" style="border-left-color: #f39c12;">
+                    <h3 style="color: #f39c12;">🇨🇳 CKB/NGDC Model</h3>
+                    <ul>
+                        <li>Exclusive period mechanism</li>
+                        <li>Controlled access via application</li>
+                        <li>Data sovereignty enforcement</li>
+                        <li>Domestic priority access</li>
+                        <li>Publication requirement tracking</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="alert-box" style="background: #d1ecf1; border-left-color: #0c5460;">
-                <div class="alert-title" style="color: #0c5460;">💡 Adaptasi untuk Konteks Indonesia</div>
-                <div class="alert-content" style="color: #0c5460;">
-                    <strong>Yang dapat diadopsi:</strong> Tiered access, cloud credit model, independent committee, mandatory training<br><br>
-                    <strong>Yang perlu modifikasi:</strong> Biaya akses (lebih rendah untuk emerging researchers), kepemimpinan PI lokal (fleksibel untuk kolaborasi), timeline review (lebih cepat untuk responsif)<br><br>
-                    <strong>Yang unik Indonesia:</strong> Peran Hub hospitals dalam approval sampel, integrasi dengan SATUSEHAT, compliance UU PDP 27/2022
+            <div style="background: linear-gradient(135deg, #3498db 0%, #27ae60 100%); padding: 40px; border-radius: 20px; margin-top: 40px; color: white;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.8em;">💡 Adaptasi untuk Konteks Indonesia</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+                    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                        <h4 style="color: #2ecc71; margin-bottom: 15px; font-size: 1.3em;">✅ Yang dapat diadopsi:</h4>
+                        <p style="line-height: 1.6;">Tiered access, cloud credit model, independent committee, mandatory training</p>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                        <h4 style="color: #f39c12; margin-bottom: 15px; font-size: 1.3em;">🔄 Yang perlu modifikasi:</h4>
+                        <p style="line-height: 1.6;">Biaya akses (lebih rendah untuk emerging researchers), kepemimpinan PI lokal (fleksibel untuk kolaborasi), timeline review (lebih cepat untuk responsif)</p>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.15); padding: 25px; border-radius: 15px; backdrop-filter: blur(10px);">
+                        <h4 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.3em;">🇮🇩 Yang unik Indonesia:</h4>
+                        <p style="line-height: 1.6;">Peran Hub hospitals dalam approval sampel, integrasi dengan SATUSEHAT, compliance UU PDP 27/2022</p>
+                    </div>
                 </div>
             </div>
         </div>
