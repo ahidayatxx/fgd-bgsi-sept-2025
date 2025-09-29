@@ -966,36 +966,91 @@
                 <span>Manajemen Risiko & Mitigasi</span>
             </div>
 
-            <div class="risk-matrix">
-                <div class="risk-card">
-                    <div class="risk-title">RISIKO: Kebocoran Data Genomik</div>
-                    <p>Data genomik bersifat identifiable & permanen. Kebocoran dapat mengidentifikasi individu & keluarga</p>
-                    <div class="mitigation">
-                        <strong>Mitigasi:</strong> TRE dengan akses terbatas, enkripsi end-to-end, audit log, sanksi hukum dalam agreement
+            <div style="margin-bottom: 40px; text-align: center;">
+                <div style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); padding: 30px; border-radius: 15px; color: white; margin-bottom: 30px;">
+                    <h3 style="font-size: 1.8em; margin-bottom: 15px;">⚖️ Framework Risiko Terintegrasi</h3>
+                    <p style="font-size: 1.2em; opacity: 0.95;">Technical Risks + Cultural/Community Risks + Governance Risks</p>
+                </div>
+            </div>
+
+            <!-- Technical Risks -->
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #3498db; font-size: 1.6em; margin-bottom: 20px; text-align: center;">💻 Technical & Operational Risks</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px;">
+                    <div class="risk-card" style="border-left-color: #3498db;">
+                        <div class="risk-title" style="color: #3498db;">RISIKO: Kebocoran Data Genomik</div>
+                        <p>Data genomik bersifat identifiable & permanen. Kebocoran dapat mengidentifikasi individu & keluarga</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> TRE dengan akses terbatas, enkripsi end-to-end, audit log, sanksi hukum dalam agreement
+                        </div>
+                    </div>
+
+                    <div class="risk-card" style="border-left-color: #3498db;">
+                        <div class="risk-title" style="color: #3498db;">RISIKO: Penyalahgunaan Sampel</div>
+                        <p>Penggunaan di luar consent partisipan atau tujuan awal penelitian</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> MTA ketat, monitoring penggunaan, sanksi blacklist untuk pelanggaran, requirement publikasi hasil
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="risk-card">
-                    <div class="risk-title">RISIKO: Conflict of Interest Komite</div>
-                    <p>Anggota komite memiliki kepentingan finansial/riset dengan pemohon</p>
-                    <div class="mitigation">
-                        <strong>Mitigasi:</strong> Deklarasi COI wajib, recusal dari review jika konflik, rotasi anggota berkala
+            <!-- Cultural & Community Risks -->
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #e67e22; font-size: 1.6em; margin-bottom: 20px; text-align: center;">🕌 Cultural & Community Risks (Pancasila-Based)</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px;">
+                    <div class="risk-card" style="border-left-color: #e67e22;">
+                        <div class="risk-title" style="color: #e67e22;">RISIKO: Pelanggaran Gotong Royong</div>
+                        <p>Penelitian yang mengutamakan individual benefit tanpa return kepada komunitas, melanggar prinsip mutual support</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> Mandatory community benefit sharing, quarterly progress report ke Hub hospitals, community liaison program
+                        </div>
+                    </div>
+
+                    <div class="risk-card" style="border-left-color: #e67e22;">
+                        <div class="risk-title" style="color: #e67e22;">RISIKO: Bias Budaya dalam Interpretasi</div>
+                        <p>Hasil genomic diinterpretasi dengan bias Western tanpa mempertimbangkan context budaya Indonesia</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> Mandatory Indonesian co-PI, cultural competency training untuk foreign researchers, local clinical validation
+                        </div>
+                    </div>
+
+                    <div class="risk-card" style="border-left-color: #e67e22;">
+                        <div class="risk-title" style="color: #e67e22;">RISIKO: "Data Colonialism"</div>
+                        <p>Ekstraksi data untuk kepentingan institusi luar negeri tanpa transfer knowledge yang setara</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> Capacity building requirement, technology transfer clause, local researcher mentoring program
+                        </div>
+                    </div>
+
+                    <div class="risk-card" style="border-left-color: #e67e22;">
+                        <div class="risk-title" style="color: #e67e22;">RISIKO: Ketidakselarasan dengan Nilai Kemanusiaan</div>
+                        <p>Penelitian yang bertentangan dengan dignity-centered operations dan multi-faith ethics</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> Multi-faith ethics review, community representative dalam DAC/SAC, spiritual impact assessment
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="risk-card">
-                    <div class="risk-title">RISIKO: Ketidakadilan Akses</div>
-                    <p>Institusi besar lebih mudah akses dibanding institusi kecil/daerah</p>
-                    <div class="mitigation">
-                        <strong>Mitigasi:</strong> Kuota untuk institusi emerging, mentoring program, biaya akses subsidized untuk akademik
+            <!-- Governance Risks -->
+            <div style="margin-bottom: 40px;">
+                <h3 style="color: #27ae60; font-size: 1.6em; margin-bottom: 20px; text-align: center;">🏛️ Governance & Equity Risks</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px;">
+                    <div class="risk-card" style="border-left-color: #27ae60;">
+                        <div class="risk-title" style="color: #27ae60;">RISIKO: Conflict of Interest Komite</div>
+                        <p>Anggota komite memiliki kepentingan finansial/riset dengan pemohon</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> Deklarasi COI wajib, recusal dari review jika konflik, rotasi anggota berkala
+                        </div>
                     </div>
-                </div>
 
-                <div class="risk-card">
-                    <div class="risk-title">RISIKO: Penyalahgunaan Sampel</div>
-                    <p>Penggunaan di luar consent partisipan atau tujuan awal penelitian</p>
-                    <div class="mitigation">
-                        <strong>Mitigasi:</strong> MTA ketat, monitoring penggunaan, sanksi blacklist untuk pelanggaran, requirement publikasi hasil
+                    <div class="risk-card" style="border-left-color: #27ae60;">
+                        <div class="risk-title" style="color: #27ae60;">RISIKO: Ketidakadilan Akses (Bhinneka Tunggal Ika)</div>
+                        <p>Institusi Jakarta/besar lebih mudah akses, melanggar prinsip unity in diversity</p>
+                        <div class="mitigation">
+                            <strong>Mitigasi:</strong> Regional quota system, mentoring program untuk emerging institutions, subsidized access fee
+                        </div>
                     </div>
                 </div>
             </div>
